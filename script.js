@@ -98,4 +98,100 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(nextSlide, 3000); 
 });
 
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+    let isValid = true;
 
+    // Ambil nilai input
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let section = document.getElementById("section").value;
+
+    // Validasi Name
+    if (name === "") {
+        document.getElementById("name-error").classList.remove("hidden");
+        isValid = false;
+    } else {
+        document.getElementById("name-error").classList.add("hidden");
+    }
+
+    // Validasi Email (Format harus benar)
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.match(emailPattern)) {
+        document.getElementById("email-error").classList.remove("hidden");
+        isValid = false;
+    } else {
+        document.getElementById("email-error").classList.add("hidden");
+    }
+
+    // Validasi Dropdown harus dipilih
+    if (section === "") {
+        document.getElementById("section-error").classList.remove("hidden");
+        isValid = false;
+    } else {
+        document.getElementById("section-error").classList.add("hidden");
+    }
+
+    // Jika ada error, hentikan form dari submit
+    if (!isValid) {
+        event.preventDefault();
+    }
+});
+    console.log("Script is loaded!"); // Debugging: pastikan script berjalan
+
+    const form = document.getElementById("contact-form");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Mencegah form terkirim sebelum validasi
+        console.log("Form submitted! Validating...");
+
+        let isValid = true;
+
+        // Validasi Nama
+        const nameInput = document.getElementById("name");
+        const nameError = document.getElementById("name-error");
+        if (nameInput.value.trim() === "") {
+            nameError.classList.remove("hidden");
+            nameInput.classList.add("border-red-500");
+            console.log("Name is invalid");
+            isValid = false;
+        } else {
+            nameError.classList.add("hidden");
+            nameInput.classList.remove("border-red-500");
+        }
+
+        // Validasi Email
+        const emailInput = document.getElementById("email");
+        const emailError = document.getElementById("email-error");
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex validasi email
+        if (!emailPattern.test(emailInput.value.trim())) {
+            emailError.classList.remove("hidden");
+            emailInput.classList.add("border-red-500");
+            console.log("Email is invalid");
+            isValid = false;
+        } else {
+            emailError.classList.add("hidden");
+            emailInput.classList.remove("border-red-500");
+        }
+
+        // Validasi Select (Dropdown)
+        const sectionInput = document.getElementById("section");
+        const sectionError = document.getElementById("section-error");
+        if (sectionInput.value === "") {
+            sectionError.classList.remove("hidden");
+            sectionInput.classList.add("border-red-500");
+            console.log("Section is invalid");
+            isValid = false;
+        } else {
+            sectionError.classList.add("hidden");
+            sectionInput.classList.remove("border-red-500");
+        }
+
+        // Jika valid, form dikirim
+        if (isValid) {
+            console.log("Form is valid! Submitting...");
+            alert("Form successfully submitted!");
+            form.reset(); // Reset form setelah submit
+        } else {
+            console.log("Form is not valid! Submission stopped.");
+        }
+    });

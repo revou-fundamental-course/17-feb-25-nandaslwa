@@ -106,28 +106,28 @@
             <p class="text-gray-500">Kunjungi landmark ikonik dan nikmati kuliner lokal.</p>
         </div>
         <div class="p-6 text-center bg-gray-100 rounded-md shadow-md">
-            <h3 class="font-bold">Bali</h3>
-            <p class="text-gray-500">Travel dan wisata di Bali, kunjungi cagar budaya dan kuliner.</p>
+            <h3 class="font-bold">Turki</h3>
+            <p class="text-gray-500">Travel dan wisata di Turki, kunjungi museum Topkapi dan Hagia Sophia.</p>
         </div>
         <div class="p-6 text-center bg-gray-100 rounded-md shadow-md">
-            <h3 class="font-bold">Japan</h3>
-            <p class="text-gray-500">Travel dan wisata di Japan, kunjungi cagar budaya dan kuliner.</p>
+            <h3 class="font-bold">Mesir</h3>
+            <p class="text-gray-500">Travel dan wisata di Mesir, kunjungi Piramida Giza dan Museum Mesir di Kairo.</p>
         </div>
         <div class="p-6 text-center bg-gray-100 rounded-md shadow-md">
-            <h3 class="font-bold">Singapore</h3>
-            <p class="text-gray-500">Kunjungi landmark ikonik dan nikmati kuliner lokal.</p>
+            <h3 class="font-bold">Hawai</h3>
+            <p class="text-gray-500">Kunjungi Bishop Museum dan Waikiki Beach.</p>
         </div>
         <div class="p-6 text-center bg-gray-100 rounded-md shadow-md">
-            <h3 class="font-bold">Bali</h3>
-            <p class="text-gray-500">Travel dan wisata di Bali, kunjungi cagar budaya dan kuliner.</p>
+            <h3 class="font-bold">India</h3>
+            <p class="text-gray-500">Wisata di India, Datang dan lihat Taj Mahal.</p>
         </div>
         <div class="p-6 text-center bg-gray-100 rounded-md shadow-md">
-            <h3 class="font-bold">Japan</h3>
-            <p class="text-gray-500">Travel dan wisata di Japan, kunjungi cagar budaya dan kuliner.</p>
+            <h3 class="font-bold">Afrika Selatan</h3>
+            <p class="text-gray-500">Afrika selatan, kunjungi Table Mountain dan Iziko South African Museum.</p>
         </div>
         <div class="p-6 text-center bg-gray-100 rounded-md shadow-md">
-            <h3 class="font-bold">Singapore</h3>
-            <p class="text-gray-500">Kunjungi landmark ikonik dan nikmati kuliner lokal.</p>
+            <h3 class="font-bold">Swiss</h3>
+            <p class="text-gray-500">Kunjungi Matterhorn dan Lake Geneva</p>
         </div>
     </div>
 </section>
@@ -165,6 +165,12 @@
                 <option value="Bali">Bali</option>
                 <option value="Japan">Japan</option>
                 <option value="Singapore">Singapore</option>
+                <option value="Singapore">Turki</option>
+                <option value="Singapore">Mesir</option>
+                <option value="Singapore">Hawai</option>
+                <option value="Singapore">India</option>
+                <option value="Singapore">Afrika Selatan</option>
+                <option value="Singapore">Swiss</option>
             </select>
             <small class="text-red-500 hidden" id="section-error">Please select an option</small>
 
@@ -183,5 +189,46 @@
 </footer>
 
 <script src="js/script.js"></script>
+<script>
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        let isValid = true;
+    
+        // Ambil nilai input
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let section = document.getElementById("section").value;
+    
+        // Validasi Name
+        if (name === "") {
+            document.getElementById("name-error").classList.remove("hidden");
+            isValid = false;
+        } else {
+            document.getElementById("name-error").classList.add("hidden");
+        }
+    
+        // Validasi Email (Format harus benar)
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email.match(emailPattern)) {
+            document.getElementById("email-error").classList.remove("hidden");
+            isValid = false;
+        } else {
+            document.getElementById("email-error").classList.add("hidden");
+        }
+    
+        // Validasi Dropdown harus dipilih
+        if (section === "") {
+            document.getElementById("section-error").classList.remove("hidden");
+            isValid = false;
+        } else {
+            document.getElementById("section-error").classList.add("hidden");
+        }
+    
+        // Jika ada error, hentikan form dari submit
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+    </script>
+    
 </body>
 </html>

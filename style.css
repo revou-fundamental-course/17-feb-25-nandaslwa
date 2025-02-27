@@ -165,3 +165,10 @@ footer {
 .hidden {
     display: none;
 }
+
+.hidden {
+    display: none;
+}
+.border-red-500 {
+    border-color: red !important;
+}
