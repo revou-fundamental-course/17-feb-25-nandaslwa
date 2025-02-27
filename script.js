@@ -1,4 +1,3 @@
-// AUTO SLIDE BANNER
 let slideIndex = 0;
 const slides = document.querySelectorAll(".slide");
 
@@ -10,7 +9,6 @@ function showSlides() {
 
 setInterval(showSlides, 3000);
 
-// FORM VALIDATION
 document.getElementById("contactForm").addEventListener("submit", function (event) {
     let name = document.getElementById("name").value.trim();
     let email = document.getElementById("email").value.trim();
@@ -22,16 +20,13 @@ document.getElementById("contactForm").addEventListener("submit", function (even
 });
 
 document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Mencegah form terkirim sebelum validasi
-    
+    event.preventDefault(); 
     let isValid = true;
 
-    // Ambil nilai input
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const section = document.getElementById("section").value;
 
-    // Validasi Nama
     if (name === "") {
         document.getElementById("name-error").classList.remove("hidden");
         isValid = false;
@@ -39,7 +34,6 @@ document.getElementById("contact-form").addEventListener("submit", function(even
         document.getElementById("name-error").classList.add("hidden");
     }
 
-    // Validasi Email
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (email === "" || !emailPattern.test(email)) {
         document.getElementById("email-error").classList.remove("hidden");
@@ -48,7 +42,6 @@ document.getElementById("contact-form").addEventListener("submit", function(even
         document.getElementById("email-error").classList.add("hidden");
     }
 
-    // Validasi Select Option
     if (section === "") {
         document.getElementById("section-error").classList.remove("hidden");
         isValid = false;
@@ -56,10 +49,8 @@ document.getElementById("contact-form").addEventListener("submit", function(even
         document.getElementById("section-error").classList.add("hidden");
     }
 
-    // Jika semua valid, kirim form
     if (isValid) {
         alert("Form submitted successfully!");
-        // Bisa tambahkan logic kirim data ke server di sini
     }
 });
 
@@ -89,10 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("next").addEventListener("click", nextSlide);
     document.getElementById("prev").addEventListener("click", prevSlide);
 
-    // Auto-slide setiap 3 detik
     setInterval(nextSlide, 3000);
 
-    // Tampilkan slide pertama saat halaman dimuat
     showSlide(currentIndex);
 });
 
@@ -101,12 +90,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let index = 0;
 
     function nextSlide() {
-        slides[index].classList.add("hidden"); // Sembunyikan gambar saat ini
-        index = (index + 1) % slides.length;  // Pindah ke gambar berikutnya
-        slides[index].classList.remove("hidden"); // Tampilkan gambar baru
+        slides[index].classList.add("hidden"); 
+        index = (index + 1) % slides.length;  
+        slides[index].classList.remove("hidden"); 
     }
 
-    setInterval(nextSlide, 3000); // Ganti gambar setiap 3 detik
+    setInterval(nextSlide, 3000); 
 });
 
 
